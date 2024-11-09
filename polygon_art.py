@@ -108,5 +108,9 @@ class EmbeddedPolygon(Polygon):
         self.reduction_ratio = reduction_ratio
 
     def draw(self):
-        pass
+        for i in range(self.num_levels):
+            super().draw()
+            self.size *= self.reduction_ratio
+            super().draw()
+
 
