@@ -45,8 +45,68 @@ location[1] = turtle.pos()[1]
 # adjust the size according to the reduction ratio
 size *= reduction_ratio
 
-# draw the second polygon embedded inside the original 
+# draw the second polygon embedded inside the original
 draw_polygon(num_sides, size, orientation, location, color, border_size)
 
 # hold the window; close it by clicking the window close 'x' mark
 turtle.done()
+
+
+class Polygon:
+    def __init__(self, num_sides, size, orientation, location, color, border_size):
+        self.num_sides = num_sides
+        self.size = size
+        self.orientation = orientation
+        self.location = location
+        self.color = color
+        self.border_size = border_size
+
+    def draw(self):
+        turtle.penup()
+        turtle.goto(self.location[0], self.location[1])
+        turtle.setheading(self.orientation)
+        turtle.color(self.color)
+        turtle.pensize(self.border_size)
+        turtle.pendown()
+        for _ in range(self.num_sides):
+            turtle.forward(self.size)
+            turtle.left(360 / self.num_sides)
+        turtle.penup()
+
+    def move(self):
+        return turtle.goto(self.location[0], self.location[1])
+
+
+def get_new_color(self):
+    return random.randint(0, 255), random.randint(0, 255), random.randint(0, 255)
+
+class PolygonArt():
+    def __init__(self):
+        turtle.speed(0)
+        turtle.bgcolor('black')
+        turtle.tracer(0)
+        turtle.colormode(255)
+
+    def run(self):
+        choice = int(input(f"Enter number of art you would like to generate 1 to 9: "))
+        size = random.randint(50, 150)
+        orientation = random.randint(0, 90)
+        location = [random.randint(-300, 300), random.randint(-200, 200)]
+        color = get_new_color()
+        border_size = random.randint(1, 10)
+        reduction_ratio = 0.618
+
+        if choice == 1:
+            num_sides = 3
+            gen = Polygon(num_sides, size, orientation, location, color, border_size)
+
+
+class EmbeddedPolygon(Polygon):
+    def __init__(self, num_sides, size, orientation, location, color, border_size, num_levels, reduction_ratio):
+        super().__init__(self, num_sides, size, orientation, location, color, border_size)
+        self.num_levels = num_levels
+        self.reduction_ratio = reduction_ratio
+
+    def draw(self):
+        pass
+
