@@ -3,3 +3,5 @@
 - Fork, then, clone this repo
 - Read the instructions given in the course's Google Classroom and start coding
 - Once you are done, push your final code to your Github repo and modify this README to report on the work you have done
+
+>>> I completed coding polygon_art.py. But in the art taht use reduction ratio, the shape with ration didn't generate in the middle of shape, it slant from the middle. To generate the art, enter the art you want to generate.
