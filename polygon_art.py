@@ -140,7 +140,13 @@ class PolygonArt():
 
 class EmbeddedPolygon(Polygon):
     def __init__(self, num_sides, size, orientation, location, color, border_size, num_levels, reduction_ratio):
-        super().__init__(self, num_sides, size, orientation, location, color, border_size)
+        # super().__init__(self, num_sides, size, orientation, location, color, border_size)
+        self.num_sides = num_sides
+        self.size = size
+        self.orientation = orientation
+        self.location = location
+        self.color = color
+        self.border_size = border_size
         self.num_levels = num_levels
         self.reduction_ratio = reduction_ratio
 
@@ -149,6 +155,8 @@ class EmbeddedPolygon(Polygon):
             for i in range(self.num_levels):
                 super().draw()
                 self.size *= self.reduction_ratio
+                self.location[0] += self.size * (1 - self.reduction_ratio) / 2
+                self.location[1] += self.size * (1 - self.reduction_ratio) / 2
                 super().draw()
 
 
